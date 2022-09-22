@@ -39,7 +39,7 @@ const AppProvider = ({ children}) => {
                console.log(data)
                setWaiting(false)
                setLoading(false)
-               setData(data)
+               setQuestions(data)
                
 
           } catch(err) {
@@ -62,10 +62,12 @@ const AppProvider = ({ children}) => {
 
            const url = `${API_ENDPOINT}amount=${amount}&difficulty=${difficulty}&category=${table[category]}&type=multiple`
 
+         
+
            fetchQuestion(url)
         }
 
-     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting , data , page , setQuestions , questions} }> { children} </AppContext.Provider>
+     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  page , setQuestions , questions ,index } }> { children} </AppContext.Provider>
 }
 
 const useGlobalContext = () => {

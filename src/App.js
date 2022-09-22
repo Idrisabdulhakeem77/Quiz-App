@@ -20,29 +20,7 @@ function App() {
    
   return (
     <div>
-     
-     {!loading && (
-          <div className='btn-container'>
-            <button className='prev-btn'>
-              prev
-            </button>
-            {data.map((item, index) => {
-              return (
-                <button
-                  key={index}
-                  className={`page-btn ${index === page ? 'active-btn' : null}`}
-
-                >
-                  {index + 1}{ console.log(data)}
-                </button>
-              )
-            })}
-            <button className='next-btn'>
-              next
-            </button>
-          
-          </div>
-        )}
+       <Questions/>
     </div>
   )
 }
