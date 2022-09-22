@@ -54,6 +54,7 @@ const AppProvider = ({ children}) => {
           setQuiz({ ...quiz, [name]: value })
         }
 
+
         const handleSubmit =(e) => {
            e.preventDefault() 
 
@@ -67,7 +68,7 @@ const AppProvider = ({ children}) => {
            fetchQuestion(url)
         }
 
-     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  page , setQuestions , questions ,index } }> { children} </AppContext.Provider>
+     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  page , setQuestions , questions ,index  , setIndex } }> { children} </AppContext.Provider>
 }
 
 const useGlobalContext = () => {

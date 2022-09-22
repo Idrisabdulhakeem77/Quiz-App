@@ -1,9 +1,10 @@
-import React from 'react'
+import React , {useState} from 'react'
 import { useGlobalContext } from '../../context'
 
 function Questions() {
      
-    const {questions  , index } = useGlobalContext()
+    const {questions  , index ,setIndex } = useGlobalContext()
+    const [correct, setcorrect] = useState(0)
   
     const { question, incorrect_answers, correct_answer } = questions[index]
     let answers = [...incorrect_answers]
@@ -13,6 +14,30 @@ function Questions() {
     } else {
       answers.push(answers[tempIndex])
       answers[tempIndex] = correct_answer
+    }
+
+    // const nextQuestion = () => {
+    //   setIndex(oldState => oldState + 1)
+    // }
+    const nextQuestion = () => {
+    
+      setIndex((oldIndex) => {
+        const index = oldIndex + 1
+        if (index > questions.length - 1) {
+          return 0
+        } else {
+          return index
+        }
+      })
+    }
+   
+
+    const checkAnswer = (value) => {
+       if(value) {
+         setcorrect(oldState => oldState + 1)
+       } 
+
+       nextQuestion()
     }
    
   return (
@@ -24,11 +49,13 @@ function Questions() {
               <div className="option-container">
                   {answers.map((answer , index) => {
                       return (
-                        <label>
+                        <label key={index}>
                         <input
                           type="radio"
                           name='options'
                           value={answer}
+                          onClick={(e) => checkAnswer(correct_answer === e.target.value)}
+                         
                           
                         />
                         { answer }
@@ -42,7 +69,7 @@ function Questions() {
     
     </div>
 
-  
+    { console.log(correct)}
     </>
    
   )

@@ -13,6 +13,8 @@ main {
     border-radius: var(--radius);
     padding: 3rem;
   }
+
+  
 .quiz-small {
    max-width: 500px;
 }
@@ -50,23 +52,3 @@ main {
     text-transform: capitalize;
   }
 
-/* 
-  .next-question,
-.close-btn,
-.submit-btn {
-  border-radius: var(--radius);
-  border-color: transparent;
-  padding: 0.25rem 0.5rem;
-  display: block;
-  width: 35%;
-  margin-left: auto;
-  margin-top: 2rem;
-  text-transform: capitalize;
-  font-weight: 700;
-  letter-spacing: var(--spacing);
-  font-size: 1rem;
-  background: #ffb100;
-  color: var(--clr-black);
-  transition: var(--transition);
-  cursor: pointer;
-} */
