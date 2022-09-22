@@ -1,5 +1,6 @@
 import React , { useState , useEffect , useContext} from "react";
 import axios from 'axios'
+import paginate from "./utils";
 
 
 const AppContext = React.createContext()
@@ -36,10 +37,12 @@ const AppProvider = ({ children}) => {
 
                const response = await axios.get(url)
                const data = response.data.results
-               console.log(data)
+               
                setWaiting(false)
                setLoading(false)
                setQuestions(data)
+               setData(paginate(data))
+               console.log(questions)
                
 
           } catch(err) {
@@ -68,7 +71,7 @@ const AppProvider = ({ children}) => {
            fetchQuestion(url)
         }
 
-     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  page , setQuestions , questions ,index  , setIndex } }> { children} </AppContext.Provider>
+     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  page , setQuestions , questions ,index  , setIndex , data } }> { children} </AppContext.Provider>
 }
 
 const useGlobalContext = () => {

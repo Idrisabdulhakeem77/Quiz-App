@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
        <Questions/>
-       <Counter/>
+      
     </div>
   )
 }
