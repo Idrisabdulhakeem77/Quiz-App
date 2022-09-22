@@ -3,6 +3,7 @@ import Form from './components/Form/Form'
 import Loading from './components/Loading/Loading'
 import { useGlobalContext } from './context'
 import Questions from './components/Questions/Questions'
+import Counter from './components/Timer/Timer'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   return (
     <div>
        <Questions/>
+       <Counter/>
     </div>
   )
 }

@@ -1,0 +1,37 @@
+.question-container {
+    width: 50vw;
+    max-width: 1170px;
+    margin: 4rem auto;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 3rem;
+    margin-bottom: 5px;
+}
+
+h2 {
+   border-bottom: 10px;
+}
+
+.option-container{
+    margin-top: 35px;
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+}
+
+.options {
+     margin-bottom: 5px;
+     border: solid 1px black;
+     border-radius: 10px;
+     padding: 1rem 0;
+     display: flex;
+     align-items: center;
+}
+
+input[type=radio] {
+      margin: 0.5rem;
+      margin-right: 1rem;
+      width: 18px;
+      height: 18px;
+      
+}

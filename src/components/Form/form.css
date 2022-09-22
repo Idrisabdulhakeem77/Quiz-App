@@ -11,10 +11,10 @@ main {
     margin: 4rem auto;
     background: #fff;
     border-radius: var(--radius);
-    padding: 3rem;
+    padding: 2rem;
   }
 
-  
+
 .quiz-small {
    max-width: 500px;
 }

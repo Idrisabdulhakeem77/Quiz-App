@@ -1,4 +1,5 @@
 import React , {useState} from 'react'
+import './question.css'
 import { useGlobalContext } from '../../context'
 
 function Questions() {
@@ -42,14 +43,14 @@ function Questions() {
    
   return (
     <>
-     <div>
+     <div className='question-container'>
         <section>
            <article>
               <h2 dangerouslySetInnerHTML={ { __html : question}}/>
               <div className="option-container">
                   {answers.map((answer , index) => {
                       return (
-                        <label key={index}>
+                        <label key={index} className="options">
                         <input
                           type="radio"
                           name='options'
