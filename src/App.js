@@ -16,16 +16,11 @@ function App() {
  if(waiting) {
    return <Form/>
  }
+ 
 
   return (
-    <div>
-        <div>
-            { console.log(questions)}
-        </div>
-       
-       
-    </div>
-  )
+       <Questions/>
+    )
 }
 
 export default App
