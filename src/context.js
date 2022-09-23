@@ -37,7 +37,7 @@ const AppProvider = ({ children}) => {
 
                const response = await axios.get(url)
                const data = response.data.results
-               
+          
                setWaiting(false)
                setLoading(false)
                setQuestions(data)
@@ -57,6 +57,8 @@ const AppProvider = ({ children}) => {
           setQuiz({ ...quiz, [name]: value })
         }
 
+        
+
 
         const handleSubmit =(e) => {
            e.preventDefault() 
@@ -70,7 +72,7 @@ const AppProvider = ({ children}) => {
 
            fetchQuestion(url)
         }
-
+ 
      return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  page , setQuestions , questions ,index  , setIndex , data } }> { children} </AppContext.Provider>
 }
 

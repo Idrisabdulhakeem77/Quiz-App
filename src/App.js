@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Form from './components/Form/Form'
 import Loading from './components/Loading/Loading'
 import { useGlobalContext } from './context'
 import Questions from './components/Questions/Questions'
-import Counter from './components/Timer/Timer'
 
 
 function App() {
+
  const { loading , waiting , data , questions , page }  =    useGlobalContext()
 
  if(loading) {
@@ -17,12 +17,10 @@ function App() {
    return <Form/>
  }
 
-  
-   
   return (
     <div>
-       <Questions/>
-      
+       {/* <Questions/> */}
+       { console.log(questions)}
     </div>
   )
 }
