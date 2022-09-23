@@ -42,7 +42,7 @@ const AppProvider = ({ children}) => {
                setLoading(false)
                setQuestions(data)
                setData(paginate(data))
-               console.log(questions)
+               console.log(data)
                
 
           } catch(err) {
@@ -57,7 +57,7 @@ const AppProvider = ({ children}) => {
           setQuiz({ ...quiz, [name]: value })
         }
 
-        
+
 
 
         const handleSubmit =(e) => {

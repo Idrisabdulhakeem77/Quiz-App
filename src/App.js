@@ -19,8 +19,11 @@ function App() {
 
   return (
     <div>
-       {/* <Questions/> */}
-       { console.log(questions)}
+        <div>
+            { console.log(questions)}
+        </div>
+       
+       
     </div>
   )
 }
