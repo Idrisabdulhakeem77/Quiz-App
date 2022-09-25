@@ -42,7 +42,7 @@ const AppProvider = ({ children}) => {
                setLoading(false)
                setQuestions(data)
                setData(paginate(data))
-               console.log(data)
+     
                
 
           } catch(err) {
@@ -73,7 +73,7 @@ const AppProvider = ({ children}) => {
            fetchQuestion(url)
         }
  
-     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  page , setQuestions , questions ,index  , setIndex , data } }> { children} </AppContext.Provider>
+     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  page , setQuestions , questions ,index  , setIndex , data  ,setPage } }> { children} </AppContext.Provider>
 }
 
 const useGlobalContext = () => {

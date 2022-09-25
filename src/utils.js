@@ -4,7 +4,7 @@ const paginate = (questions) => {
   
     const newQuestions = Array.from({ length: numberOfPages }, (_, index) => {
       const start = index * itemsPerPage
-      console.log(start)
+
       return questions.slice(start, start + itemsPerPage)
     })
   

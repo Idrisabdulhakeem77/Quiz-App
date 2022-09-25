@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 function Questions() {
      
-    const {questions  , index ,setIndex , data , loading , page , setQuestions} = useGlobalContext()
+    const {questions  , index ,setIndex , data , loading , page , setQuestions , setPage} = useGlobalContext()
     const [correct, setcorrect] = useState(0)
   
     useEffect(() => {
@@ -44,17 +44,21 @@ function Questions() {
     useEffect(() => {
        setQuestions(data[page])
     } , [page , loading])
+    
 
+    const handlePage = (index) => {
+      setPage(index)
+    }
 
-    // const { question, incorrect_answers, correct_answer } = questions[index]
-    // let answers = [...incorrect_answers]
-    // const tempIndex = Math.floor(Math.random() * 4) 
-    // if (tempIndex === 3) {
-    //   answers.push(correct_answer)
-    // } else {
-    //   answers.push(answers[tempIndex])
-    //   answers[tempIndex] = correct_answer
-    // }
+    const { question, incorrect_answers, correct_answer } = questions[index]
+    let answers = [...incorrect_answers]
+    const tempIndex = Math.floor(Math.random() * 4) 
+    if (tempIndex === 3) {
+      answers.push(correct_answer)
+    } else {
+      answers.push(answers[tempIndex])
+      answers[tempIndex] = correct_answer
+    }
    
   return (
     <>
@@ -104,7 +108,38 @@ function Questions() {
          
         </section>
     </div> */}
-        { console.log(questions)}
+        <h2 dangerouslySetInnerHTML={ { __html : question}}/>
+        <div className="option-container">
+                  {answers.map((answer , index) => {
+                      return (
+                        <label key={index} className="options">
+                        <input
+                          type="radio"
+                          name='options'
+                          value={answer}
+                          
+                         
+                          
+                        />
+                        { answer }
+                      </label>
+                      )
+                  })}
+              </div>
+
+
+    
+        {data.map((item, index) => {
+              return (
+                <button
+                  key={index}
+                  className={`page-btn ${index === page ? 'active-btn' : null}`}
+                  onClick={() => handlePage(index)}
+                >
+                  {index + 1}
+                </button>
+              )
+            })}
     </>
    
   )
