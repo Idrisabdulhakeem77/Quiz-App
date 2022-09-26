@@ -17,6 +17,7 @@ function App() {
   const [loading , setLoading] = useState(false)
   const [waiting , setWaiting] = useState(true)
    const [error, setError] = useState(false)
+  //  const [answers , setAnswer] = useState([])
 
 
    const fetchQuestion = async() => {
@@ -48,24 +49,24 @@ useEffect(( ) =>  {
 
 
 const questionPaginated = questions?.map(q => {
-  const { question, incorrect_answers, correct_answer } = q 
-    return  { question, incorrect_answers, correct_answer}
-})
-
-if(questionPaginated) {
-   console.log(true)
+  const {  incorrect_answers, correct_answer } = q 
+  let answers = [...incorrect_answers]
+  const tempIndex = Math.floor(Math.random() * 4) // returns a number within 0 to 4
+  if (tempIndex === 3) {
+    answers.push(correct_answer)
+  } else {
+    answers.push(answers[tempIndex])
+    answers[tempIndex] = correct_answer
+  }
+    
+   return {answers}
 }
 
-// const { question, incorrect_answers, correct_answer } = questionPaginated
-//   const answers = [...incorrect_answers, correct_answer]
-//   let answers = [...incorrect_answers]
-//   const tempIndex = Math.floor(Math.random() * 4) // returns a number within 0 to 4
-//   if (tempIndex === 3) {
-//     answers.push(correct_answer)
-//   } else {
-//     answers.push(answers[tempIndex])
-//     answers[tempIndex] = correct_answer
-//   }
+   
+  // setAnswer(answers)
+)
+
+  
 
   return (
       //  <div>
@@ -73,7 +74,9 @@ if(questionPaginated) {
       //  </div>
 
       <div>
-          {questionPaginated && questionPaginated[index]}
+          {questionPaginated &&  console.log(questionPaginated[index]) }
+          {/* { console.log(answers.answers)} */}
+          
       </div>
   )
 }
