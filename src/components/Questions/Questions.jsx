@@ -24,6 +24,13 @@ function Questions() {
         } else {
           return index
         }
+        // const [questions, setQuestions] = useStconst [questions, setQuestions] = useState([])
+        // const [page , setPage] = useState(0)
+        // const [index, setIndex] = useState(0)
+        // const [correct, setCorrect] = useState(0)ate([])
+        // const [page , setPage] = useState(0)
+        // const [index, setIndex] = useState(0)
+        // const [correct, setCorrect] = useState(0)
       })
     }
 

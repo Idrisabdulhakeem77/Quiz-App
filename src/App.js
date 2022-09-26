@@ -1,6 +1,6 @@
 import React, { useEffect , useState } from 'react'
-import Question from './Question'
-import { useFetch } from './useFetch'
+import axios from 'axios'
+import paginate from './utils'
 // import Form from './components/Form/Form'
 // import Loading from './components/Loading/Loading'
 // import { useGlobalContext } from './context'
@@ -8,10 +8,26 @@ import { useFetch } from './useFetch'
 
 
 function App() {
-   const { loading, data } = useFetch()
-   const [page, setPage] = useState(0)
-  const [questions, setQuestions] = useState([])
+  
+  const [data , setData] = useState([])
   const [index , setIndex] = useState(0)
+  const [page , setPage ] = useState(0)
+  const [questions , setQuestions ] = useState([])
+  const [correct, setcorrect] = useState(0)
+  const [loading , setLoading] = useState(false)
+  const [waiting , setWaiting] = useState(true)
+   const [error, setError] = useState(false)
+
+
+   const fetchQuestion = async() => {
+    setLoading(true)
+        const response = await axios.get('https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple')
+       
+        const data = response.data.results
+
+       setData(paginate(data))
+       setLoading(false) 
+   }
 //  const { loading , waiting , data , questions , page }  =    useGlobalContext()
 
 //  if(loading) {
@@ -23,99 +39,43 @@ function App() {
 //  }
 
 useEffect(() => {
-  if (loading) return
-  setQuestions(data[page])
-}, [loading, page])
- 
+   fetchQuestion()
+} , [])
 
-const nextPage = () => {
-  setPage((oldPage) => {
-    let nextPage = oldPage + 1
-    if (nextPage > data.length - 1) {
-      nextPage = 0
-    }
-    return nextPage
-  })
-}
-const prevPage = () => {
-  setPage((oldPage) => {
-    let prevPage = oldPage - 1
-    if (prevPage < 0) {
-      prevPage = data.length - 1
-    }
-    return prevPage
-  })
+useEffect(( ) =>  {
+    setQuestions(data[page])
+}, [loading , page ])
+
+
+const questionPaginated = questions?.map(q => {
+  const { question, incorrect_answers, correct_answer } = q 
+    return  { question, incorrect_answers, correct_answer}
+})
+
+if(questionPaginated) {
+   console.log(true)
 }
 
-const handlePage = (index) => {
-  setPage(index)
-}
-
-
-const incorrect_answers = questions[0].incorrect_answers
-let answers = [...incorrect_answers]
-// const tempIndex = Math.floor(Math.random() * 4) 
-// if (tempIndex === 3) {
-//   answers.push(correct_answer)
-// } else {
-//   answers.push(answers[tempIndex])
-//   answers[tempIndex] = correct_answer
-// }
-
+// const { question, incorrect_answers, correct_answer } = questionPaginated
+//   const answers = [...incorrect_answers, correct_answer]
+//   let answers = [...incorrect_answers]
+//   const tempIndex = Math.floor(Math.random() * 4) // returns a number within 0 to 4
+//   if (tempIndex === 3) {
+//     answers.push(correct_answer)
+//   } else {
+//     answers.push(answers[tempIndex])
+//     answers[tempIndex] = correct_answer
+//   }
 
   return (
-      //  <Questions/>
-     <>
-      { console.log(questions)}
+      //  <div>
+      //    <Questions/>
+      //  </div>
 
-      { questions.map( (question , index) => {
-           return (
-             <Question key={index} {...question} />
-           )
-      })}
-              <div className="option-container">
-                  {answers.map((answer , index) => {
-                      return (
-                        <label key={index} className="options">
-                        <input
-                          type="radio"
-                          name='options'
-                          value={answer}
-                          
-                         
-                          
-                        />
-                        { answer }
-                      </label>
-                      )
-                  })}
-              </div>
-
-{!loading && (
-          <div className='btn-container'>
-            <button className='prev-btn' onClick={prevPage}>
-              prev
-            </button>
-            {data.map((item, index) => {
-              return (
-                <button
-                  key={index}
-                  className={`page-btn ${index === page ? 'active-btn' : null}`}
-                  onClick={() => handlePage(index)}
-                >
-                  {index + 1}
-                </button>
-              )
-            })}
-            <button className='next-btn' onClick={nextPage}>
-              next
-            </button>
-          </div>
-        )}
-
-        
-     </>
-    )
+      <div>
+          {questionPaginated && questionPaginated[index]}
+      </div>
+  )
 }
 
 export default App
