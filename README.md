@@ -33,4 +33,4 @@ Quiz App Project App
 
 # results
 
-![](assets/results)
+![](/src/assets/results)
