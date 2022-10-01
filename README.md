@@ -25,12 +25,12 @@ Quiz App Project App
 
 
 # Form
-![screenshot form](assets/form.png)
+![screenshot form](/assets/form.png)
 
 # Questions
 
-![screenshot question](assets/question.png)
+![screenshot question](/assets/question.png)
 
 # Results
 
-![screenshot result](assets/results)
+![screenshot result](/assets/results.png)
