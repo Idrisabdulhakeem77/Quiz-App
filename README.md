@@ -29,16 +29,7 @@ Quiz App Project App
 
 # Questions
 
-<<<<<<< HEAD
-![screenshot question](/assets/question.png)
-=======
-![screenshot](assets/question.png)
->>>>>>> fc9a2129736acf6882210b6be756aaa10c4032b3
 
 # Results
 
-<<<<<<< HEAD
-![screenshot result](/assets/results.png)
-=======
-![](/src/assets/results)
->>>>>>> fc9a2129736acf6882210b6be756aaa10c4032b3
+
