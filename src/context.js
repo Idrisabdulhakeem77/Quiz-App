@@ -18,8 +18,7 @@ const AppProvider = ({ children}) => {
      const [loading , setLoading] = useState(false)
      const [waiting , setWaiting] = useState(true)
      const [questions, setQuestions] = useState([])
-     
-     const [index, setIndex] = useState(0)
+      const [index, setIndex] = useState(0)
      const [error , setError] = useState()
      const [correct, setCorrect] = useState(0)
      const [quiz, setQuiz] = useState({
@@ -28,14 +27,13 @@ const AppProvider = ({ children}) => {
           difficulty: 'easy',
           type : "multiple"
         })
-     
-         const fetchQuestion =  async (url) => {
-         
-               setLoading(true)
-              const response = await axios.get(url)
-              if (response) {
-               const data = response.data.results
-               if (data.length > 0) {
+     const [isshowResult , setShowResult] = useState(false)
+const fetchQuestion =  async (url) => {
+     setLoading(true)
+      const response = await axios.get(url)
+       if (response) {
+          const data = response.data.results
+            if (data.length > 0) {
                  setQuestions(data)
                  setLoading(false)
                  setWaiting(false)
@@ -47,15 +45,46 @@ const AppProvider = ({ children}) => {
              } else {
                setWaiting(true)
              }
-          
-            
-         }
+ }
 
-        const handleChange = (e) => {
+
+ const  showResult = ()  => {
+      setShowResult(true)
+ }
+
+ const closeShowResult = () => {
+      setShowResult(false)
+ }
+ 
+   
+ const handleChange = (e) => {
           const name = e.target.name
           const value = e.target.value
           setQuiz({ ...quiz, [name]: value })
-        }
+ }
+const playAgain = () => {
+      setWaiting(true)
+      setCorrect(0)
+      showResult(false)
+}
+ const nextQuestion = () => {
+     setIndex((oldIndex) => {
+       const index = oldIndex + 1
+       if (index > questions.length - 1) {
+          showResult()
+         return 0
+       } else {
+         return index
+       }
+     })
+   }
+
+   const checkAnswer = (value) => {
+     if (value) {
+       setCorrect((oldState) => oldState + 1)
+     }
+     nextQuestion()
+   }
 
         const handleSubmit =(e) => {
            e.preventDefault() 
@@ -71,7 +100,7 @@ const AppProvider = ({ children}) => {
            fetchQuestion(url)
         }
  
-     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  page , setQuestions , questions ,index  , setIndex   ,setPage } }> { children} </AppContext.Provider>
+     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  setQuestions , questions ,index  , setIndex , checkAnswer  , showResult , closeShowResult  , nextQuestion , correct  , isshowResult , playAgain  } }> { children} </AppContext.Provider>
 }
 
 const useGlobalContext = () => {

@@ -5,6 +5,7 @@ import Form from './components/Form/Form'
 import Loading from './components/Loading/Loading'
 import { useGlobalContext } from './context'
 import Questions from './components/Questions/Questions'
+import Results from './components/Results/Results'
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
 return (
 
       <div>
-          
+            <Results/>
             <Questions/>
       </div>
   )

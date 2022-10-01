@@ -1,0 +1,8 @@
+.show-result  {
+     opacity: 0;
+}
+
+.isOpen {
+     opacity: 1;
+     z-index: 999;
+}
