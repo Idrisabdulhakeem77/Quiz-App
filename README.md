@@ -29,7 +29,7 @@ Quiz App Project App
 
 # Questions
 
-![](assets/question.png)
+![screenshot](assets/question.png)
 
 # results
 
