@@ -30,6 +30,7 @@ const AppProvider = ({ children}) => {
      const [isshowResult , setShowResult] = useState(false)
 const fetchQuestion =  async (url) => {
      setLoading(true)
+     setShowResult(false)
       const response = await axios.get(url)
        if (response) {
           const data = response.data.results
@@ -56,7 +57,7 @@ const fetchQuestion =  async (url) => {
       setShowResult(false)
  }
  
-   
+
  const handleChange = (e) => {
           const name = e.target.name
           const value = e.target.value
@@ -100,7 +101,7 @@ const playAgain = () => {
            fetchQuestion(url)
         }
  
-     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  setQuestions , questions ,index  , setIndex , checkAnswer  , showResult , closeShowResult  , nextQuestion , correct  , isshowResult , playAgain  } }> { children} </AppContext.Provider>
+     return <AppContext.Provider value={{ handleChange , quiz , handleSubmit ,loading , waiting ,  setQuestions , questions ,index  , setIndex , checkAnswer  , showResult , closeShowResult  , nextQuestion , correct  , isshowResult , playAgain   } }> { children} </AppContext.Provider>
 }
 
 const useGlobalContext = () => {

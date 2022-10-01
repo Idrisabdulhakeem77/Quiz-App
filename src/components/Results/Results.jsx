@@ -3,7 +3,7 @@ import { useGlobalContext } from '../../context'
 import './results.css'
 
 function Results() {
-    const {correct , isshowResult , questions , playAgain } = useGlobalContext()
+    const {correct , isshowResult , questions , playAgain , checkAnsers } = useGlobalContext()
   return (
     <div  className={`${isshowResult ? "show-result isOpen" : "show-result"}`}>
          <div className='content'>
@@ -13,9 +13,9 @@ function Results() {
                You answered {((correct / questions.length) * 100).toFixed(0)}% of
                questions correctly
         </p> 
-          <div className='btn-container'>
-              <button> Check Answers</button>
-              <button onClick={playAgain}> Play Again</button>  
+          <div className=' btn-container'>
+
+              <button className="btn" onClick={playAgain}> Play Again</button>  
           </div>
          </div>
     </div>
