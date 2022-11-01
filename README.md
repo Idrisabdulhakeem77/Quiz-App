@@ -12,7 +12,7 @@ Quiz App Project App
 ## Technologies used
 
 -React v18
--Context Api for stage Management
+-Context Api for state Management
 -Axios for data fetching
 
 ## Features
@@ -28,8 +28,10 @@ Quiz App Project App
 ![screenshot form](/assets/form.png)
 
 # Questions
-
+ 
+ ![screenshot form](/assets/question.png)
 
 # Results
 
+![screenshot form](/assets/result.png)
 
